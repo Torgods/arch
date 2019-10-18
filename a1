@@ -1,4 +1,6 @@
 #!/bin/bash
+	loadkeys ru
+	setfont cyr-sun16
 
 echo "Форматирование и монтирование разделов[a1] "
 	read -p "Ведите литиру и № раздела boot :" disk1
