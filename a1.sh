@@ -17,4 +17,4 @@ echo "Форматирование и монтирование разделов[
 	mkdir /mnt/{boot,home}
 	mount /dev/sd$disk1 /mnt/boot
 	mount /dev/sd$disk3 /mnt/home
-	swapom /dev/sd$disk4
+	swapon /dev/sd$disk4
