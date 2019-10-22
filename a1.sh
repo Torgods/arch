@@ -65,9 +65,8 @@ pacstrap /mnt base base-devel
 echo "Генерация таблици fstab"
 genfstab -pU /mnt >> /mnt/etc/fstab
 
-<<<<<<< HEAD
-arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Torgods/arch/master/a2.sh)"
-=======
-arch-chroot /mnt
 
->>>>>>> ee72ea93dd351b82dafc164972b1f6710dfa3579
+arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Torgods/arch/master/a2.sh)"
+
+
+
