@@ -27,7 +27,7 @@ elif [[ $var == 2 ]]; then
 	mkfs.ext4 /dev/sd$disk2 -L root
 	mount /dev/sd$disk2 /mnt
 	mkdir /mnt/boot
-elif [[ var == 3 ]]; then
+elif [[ $var == 3 ]]; then
 	echo "Форматирование и монтирование разделов[a1] "
 	read -p "Ведите литиру и № раздела boot :" disk1
 	read -p "Ведите литиру и № раздела root :" disk2
