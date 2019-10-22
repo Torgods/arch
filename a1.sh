@@ -15,12 +15,12 @@ echo "то нажмине (4)"
 
 read -p "Вводим нужное чесло:" var
 if   [[ $var == 1 ]]; then
-	echo "Форматирование и монтирование раздела[a1] "
-	read -p "Ведите литиру и № раздела  :" disk1
+	echo "Форматирование и монтирование раздела например(a1) "
+	read -p "Ведите литиру и № раздела :" disk1
 	mkfs.ext4 /dev/sd$disk1 -L root
 	mount /dev/sd$disk2 /mnt
 elif [[ $var == 2 ]]; then
-	echo "Форматирование и монтирование разделов[a1] "
+	echo "Форматирование и монтирование разделов "
 	read -p "Ведите литиру и № раздела boot :" disk1
 	read -p "Ведите литиру и № раздела root :" disk2
 	mkfs.ext2 /dev/sd$disk1 -L boot
@@ -28,7 +28,7 @@ elif [[ $var == 2 ]]; then
 	mount /dev/sd$disk2 /mnt
 	mkdir /mnt/boot
 elif [[ $var == 3 ]]; then
-	echo "Форматирование и монтирование разделов[a1] "
+	echo "Форматирование и монтирование разделов например(a1)"
 	read -p "Ведите литиру и № раздела boot :" disk1
 	read -p "Ведите литиру и № раздела root :" disk2
 	read -p "Ведите литиру и № раздела home :" disk3
@@ -40,7 +40,7 @@ elif [[ $var == 3 ]]; then
 	mount /dev/sd$disk1 /mnt/boot
 	mount /dev/sd$disk3 /mnt/home
 elif [[ $var == 4 ]]; then
-	echo "Форматирование и монтирование разделов[a1] "
+	echo "Форматирование и монтирование разделов например(a1)"
 	read -p "Ведите литиру и № раздела boot :" disk1
 	read -p "Ведите литиру и № раздела root :" disk2
 	read -p "Ведите литиру и № раздела home :" disk3
@@ -91,8 +91,14 @@ if [[ $lang == ru ]]; then
 elif [[ $lang == en ]]; then
 	echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
 fi
+echo "Создаём загрузочный диск RAM"
+pacman -Sy mkinitcpio linux --noconfirm
+mkinitcpio -p linux
 
+read -p "Укажите лителу вашего диска например (a) :" disk
+echo " Устанавливаем загрузчик grub"
 
-
-
+pacman -Syy
+pacman -S grub --noconfirm 
+grub-install /dev/sd$disk
 
