@@ -16,7 +16,7 @@ echo "то нажмине (4)"
 read -p "Вводим нужное чесло:" var
 if   [[ $var == 1 ]]; then
 	echo "Форматирование и монтирование раздела[a1] "
-	read -p "Ведите литиру и № раздела boot :" disk1
+	read -p "Ведите литиру и № раздела  :" disk1
 	mkfs.ext4 /dev/sd$disk1 -L root
 	mount /dev/sd$disk2 /mnt
 elif [[ $var == 2 ]]; then
@@ -56,6 +56,43 @@ elif [[ $var == 4 ]]; then
 	swapon /dev/sd$disk4
 fi
 
-
 echo "Установка зеркала yandex"
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+
+echo "Установка базовых пакетов"
+pacstrap /mnt base base-devel
+
+echo "Генерация таблици fstab"
+genfstab -pU /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+
+read -p "Ведите имя пользователя: " username
+read -p "Ведите иня компютера: " hostname
+read -p "Ведите ваш регион например (Europe) : " region
+read -p "Ведите ваш город например (Moscow) : " city
+
+echo $hostname > /etc/hostname
+
+ln -svf /usr/share/zoneinfo/$region/$city /etc/localtime
+echo "Добавляем Русскую локаль"
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen
+
+echo "Обновляем текущию локаль"
+locale-gen
+
+echo "устанавливаем язык системы"
+read -p "Ведите (ru) или (en) : " lang
+if [[ $lang == ru ]]; then
+	echo 'LANG="ru_RU.UTF-8"' > /etc/locale.conf
+	echo 'KEYMAP=ru' >> /etc/vconsole.conf
+	echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
+elif [[ $lang == en ]]; then
+	echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
+fi
+
+
+
+
+
