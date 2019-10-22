@@ -4,7 +4,7 @@ loadkeys ru
 setfont cyr-sun16
 timedatectl set-ntp true
 
-echo "Если рамечали диск только на один раздел "
+echo "Если размечали диск только на один раздел "
 echo "то нажмите (1)"
 echo "Если на 2 boot и root"
 echo "то нажмите (2)"
@@ -13,8 +13,8 @@ echo "то нажмите (3)"
 echo "Если содовали разделы boot root home и swap"
 echo "то нажмине (4)"
 
-read -p "Вводим нужное чесло: " var
-if [[ $var == 1 ]]; then
+read -p "Вводим нужное чесло:" var
+if   [[ $var == 1 ]]; then
 	echo "Форматирование и монтирование раздела[a1] "
 	read -p "Ведите литиру и № раздела boot :" disk1
 	mkfs.ext4 /dev/sd$disk1 -L root
@@ -39,7 +39,7 @@ elif [[ $var == 3 ]]; then
 	mkdir /mnt/{boot,home}
 	mount /dev/sd$disk1 /mnt/boot
 	mount /dev/sd$disk3 /mnt/home
-elif [[ var == 4 ]]; then
+elif [[ $var == 4 ]]; then
 	echo "Форматирование и монтирование разделов[a1] "
 	read -p "Ведите литиру и № раздела boot :" disk1
 	read -p "Ведите литиру и № раздела root :" disk2
@@ -57,5 +57,5 @@ elif [[ var == 4 ]]; then
 fi
 
 
-
-#echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+echo "Установка зеркала yandex"
+echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
