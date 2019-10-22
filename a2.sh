@@ -38,6 +38,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Ставим программы Wi-fi"
 pacman -S dialog wpa_supplicant --noconfirm 
+echo 'Ставим сеть'
+pacman -S networkmanager network-manager-applet ppp --noconfirm
+systemctl enable NetworkManager
 
 echo "Создаем root пароль"
 passwd
@@ -47,12 +50,12 @@ echo "Устанавливаем пароль пользователя"
 passwd $username
 
 echo 'Устанавливаем SUDO'
-echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+echo '%wheel ALL=(ALL) ALL' >> /etc/sudoersa
 
 echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 pacman -Syy
 
-echo "Базавая установка Archlinux завершина "
+echo "Базавая установка Archlinux завершина" 
+echo "перезагрузите систему reboot"
 exit
-reboot
