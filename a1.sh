@@ -67,13 +67,4 @@ genfstab -pU /mnt >> /mnt/etc/fstab
 
 
 arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Torgods/arch/master/a2.sh)"
-<<<<<<< HEAD
 
-arch-chroot /mnt
-
-
-=======
-
-
-
->>>>>>> 5af93234a4273fdf13a694c6bc7ff9fc1ff78ccd
