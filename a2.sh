@@ -46,6 +46,13 @@ useradd -m -g users -G wheel -s /bin/bash $username
 echo "Устанавливаем пароль пользователя"
 passwd $username
 
+echo 'Устанавливаем SUDO'
+echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+
+echo '[multilib]' >> /etc/pacman.conf
+echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+pacman -Syy
+
 echo "Базавая установка Archlinux завершина "
 exit
-rebot
+reboot
