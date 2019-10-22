@@ -15,23 +15,23 @@ echo "то нажмине (4)"
 
 read -p "Вводим нужное чесло:" var
 if   [[ $var == 1 ]]; then
-	echo "Форматирование и монтирование раздела например(a1) "
-	read -p "Ведите литиру и № раздела :" disk1
+	echo "Форматирование и монтирование раздела  "
+	read -p "Ведите литиру и № раздела например(a1):" disk1
 	mkfs.ext4 /dev/sd$disk1 -L root
 	mount /dev/sd$disk2 /mnt
 elif [[ $var == 2 ]]; then
-	echo "Форматирование и монтирование разделов "
-	read -p "Ведите литиру и № раздела boot :" disk1
-	read -p "Ведите литиру и № раздела root :" disk2
+	echo "Форматирование и монтирование разделов  "
+	read -p "Ведите литиру и № раздела boot например(a1):" disk1
+	read -p "Ведите литиру и № раздела root например(a1):" disk2
 	mkfs.ext2 /dev/sd$disk1 -L boot
 	mkfs.ext4 /dev/sd$disk2 -L root
 	mount /dev/sd$disk2 /mnt
 	mkdir /mnt/boot
 elif [[ $var == 3 ]]; then
-	echo "Форматирование и монтирование разделов например(a1)"
-	read -p "Ведите литиру и № раздела boot :" disk1
-	read -p "Ведите литиру и № раздела root :" disk2
-	read -p "Ведите литиру и № раздела home :" disk3
+	echo "Форматирование и монтирование разделов "
+	read -p "Ведите литиру и № раздела boot например(a1):" disk1
+	read -p "Ведите литиру и № раздела root например(a1):" disk2
+	read -p "Ведите литиру и № раздела home например(a1):" disk3
 	mkfs.ext2 /dev/sd$disk1 -L boot
 	mkfs.ext4 /dev/sd$disk2 -L root
 	mkfs.ext4 /dev/sd$disk3 -L home
@@ -40,11 +40,11 @@ elif [[ $var == 3 ]]; then
 	mount /dev/sd$disk1 /mnt/boot
 	mount /dev/sd$disk3 /mnt/home
 elif [[ $var == 4 ]]; then
-	echo "Форматирование и монтирование разделов например(a1)"
-	read -p "Ведите литиру и № раздела boot :" disk1
-	read -p "Ведите литиру и № раздела root :" disk2
-	read -p "Ведите литиру и № раздела home :" disk3
-	read -p "Ведите литиру и № раздела swap :" disk4
+	echo "Форматирование и монтирование разделов "
+	read -p "Ведите литиру и № раздела boot например(a1):" disk1
+	read -p "Ведите литиру и № раздела root например(a1):" disk2
+	read -p "Ведите литиру и № раздела home например(a1):" disk3
+	read -p "Ведите литиру и № раздела swap например(a1):" disk4
 	mkfs.ext2 /dev/sd$disk1 -L boot
 	mkfs.ext4 /dev/sd$disk2 -L root
 	mkfs.ext4 /dev/sd$disk3 -L home
@@ -65,9 +65,9 @@ pacstrap /mnt base base-devel
 echo "Генерация таблици fstab"
 genfstab -pU /mnt >> /mnt/etc/fstab
 
-<<<<<<< HEAD
+
 arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Torgods/arch/master/a2.sh)"
-=======
+
 arch-chroot /mnt
 
->>>>>>> ee72ea93dd351b82dafc164972b1f6710dfa3579
+
