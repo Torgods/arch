@@ -96,9 +96,23 @@ pacman -Sy mkinitcpio linux --noconfirm
 mkinitcpio -p linux
 
 read -p "Укажите лителу вашего диска например (a) :" disk
-echo " Устанавливаем загрузчик grub"
-
+echo " Устанавливаем загрузчик grub "
+ 
 pacman -Syy
 pacman -S grub --noconfirm 
 grub-install /dev/sd$disk
+grub-mkconfig -o /boot/grub/grub.cfg
 
+echo "Ставим программы Wi-fi"
+pacman -S dialog wpa_supplicant --noconfirm 
+
+echo "Создаем root пароль"
+passwd
+
+useradd -m -g users -G wheel -s /bin/bash $username
+echo "Устанавливаем пароль пользователя"
+passwd $username
+
+echo "Базавая установка Archlinux завершина "
+exit
+rebot
