@@ -50,7 +50,7 @@ echo "Устанавливаем пароль пользователя"
 passwd $username
 
 echo 'Устанавливаем SUDO'
-echo '%wheel ALL=(ALL) ALL' >> /etc/sudoersa
+echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
