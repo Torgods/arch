@@ -74,11 +74,11 @@ elif [[ $vmset == 2 ]]; then
 	pacman -S xorg-server xorg-drivers xorg-xinit virtualbox-guest-utils --noconfirm
 fi
 echo 'что будем исползовать в Xfce4(1) i3(2) '
-read -p "ввщдим 1 или 2" gui 
+read -p " 1 или 2" gui 
 if [[ $gui == 1 ]]; then
 	pacman -S xfce4 xfce4-goodies --noconfirm
-elif [[ condition ]]; then
-		pacman -S i3 i3-status dmenu rxvt-unicode
+elif [[ $gui == 2 ]]; then
+	pacman -S i3 i3-status dmenu rxvt-unicode --noconfirm
 fi
 
 
