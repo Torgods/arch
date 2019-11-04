@@ -28,7 +28,7 @@ echo "Создаём загрузочный диск RAM"
 pacman -Sy mkinitcpio linux --noconfirm
 mkinitcpio -p linux
 
-read -p "Укажите лителу вашего диска например (a) :" disk
+read -p "Укажите литеру вашего диска например (a) :" disk
 echo " Устанавливаем загрузчик grub "
  
 pacman -Syy
@@ -56,6 +56,30 @@ echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 pacman -Syy
 
-echo "Базавая установка Archlinux завершина" 
-echo "перезагрузите систему reboot"
-exit
+echo "Базавая установка Archlinux завершина"
+echo
+
+read -p "Будим продолжать (Y N)? " yn
+if [[ $yn == n ]]; then
+ 	echo "перезагрузите систему командой reboot "
+ 	exit
+ elif [[ $yn == y ]]; then
+ 	echo "Будут установлены Xserver и драйвера"
+ 	echo "куда будем утанавливать PC или VB "
+fi
+read -p "PC 1 VB 2 " vmset
+if [[ $vmset == 1 ]]; then
+	pacman -S xorg-server xorg-drivers xorg-xinit --noconfirm
+elif [[ $vmset == 2 ]]; then
+	pacman -S xorg-server xorg-drivers xorg-xinit virtualbox-guest-utils --noconfirm
+fi
+echo 'что будем исползовать в Xfce4(1) i3(2) '
+read -p "ввщдим 1 или 2" gui 
+if [[ $gui == 1 ]]; then
+	pacman -S xfce4 xfce4-goodies --noconfirm
+elif [[ condition ]]; then
+		pacman -S i3 i3-status dmenu rxvt-unicode
+fi
+
+
+
