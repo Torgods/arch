@@ -1,0 +1,24 @@
+
+
+!Цвет шрифта
+	URxvt*foreground: #58d6c1
+!Цвет фона
+	URxvt*background: #101f21
+		!Прозрачность
+			!URxvt*transparent: true
+			!URxvt*shading: 10
+
+			!URxvt*tintColor: #083030
+			!URxvt.inheritPixmap:     true 
+
+!Курсор
+	URxvt.cursorBlink: true
+	URxvt.cursorColor: #f2ea07
+
+!Скрол бар отключен
+	URxvt.scrollBar: false
+
+!Шрифты
+	URxvt.font: xft:Monospace:size=10
+
+!команда перезапуска rxdb ~/.Xresourcer
