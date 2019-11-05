@@ -10,7 +10,7 @@ echo "Если на 2 boot и root"
 echo "то нажмите (2)"
 echo "Если создовали оделные разделы под boot root и home"
 echo "то нажмите (3)"
-echo "Если содовали разделы boot root home и swap"
+echo "Если создовали разделы boot root home и swap"
 echo "то нажмине (4)"
 
 read -p "Вводим нужное чесло:" var

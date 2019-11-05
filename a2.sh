@@ -78,8 +78,14 @@ read -p " 1 или 2" gui
 if [[ $gui == 1 ]]; then
 	pacman -S xfce4 xfce4-goodies --noconfirm
 elif [[ $gui == 2 ]]; then
-	pacman -S i3 i3-status dmenu rxvt-unicode --noconfirm
+	pacman -S i3-wm i3-status dmenu rxvt-unicode --noconfirm
 fi
+  
+pacman -S git --noconfirm
+git clone http:/aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 
-
+yay -S ly-git
+systemctl enable ly
 
