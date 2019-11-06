@@ -12,4 +12,4 @@ makepkg -si
 sudo yay -S ly-git --noconfirm
 echo '2'
 echo
-systemctl enable ly
+sudo systemctl enable ly
